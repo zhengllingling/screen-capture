@@ -1,0 +1,20 @@
+@import "./module/index.scss";
+html,body,ul,li {
+  margin: 0;
+  padding: 0;
+}
+html,body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.syn-yuan-icon {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  color: #fff;
+}

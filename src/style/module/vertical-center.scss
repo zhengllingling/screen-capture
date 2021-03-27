@@ -1,0 +1,73 @@
+/**
+* 使用绝对定位和负外边距对块级元素进行垂直居中
+* 父元素position值需要设置为relative
+* 缺点：需要提前知道被居中的块级元素的尺寸，否则无法实现垂直居中
+* $height：被居中的块级元素的高度
+*/
+
+@mixin verticalCenterModeFirst($height) {
+  position: absolute;
+  top: 50%;
+  margin-top: -$height/2;
+}
+
+/**
+* 使用绝对定位transform
+* 父元素position值需要设置为relative
+* 优点：不用提前知道被剧中的元素尺寸，因为transform中偏移的百分比就是相对元素自身的尺寸而言的，
+* 当被居中的元素是被自己内部元素撑开宽或高的时候使用此方法
+*/
+
+@mixin verticalCenterModeSecond {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/**
+* 使用绝对定位+margin:auto
+* 核心：要把垂直居中的元素相对父元素绝对定位，top和bottom设置成0，也可以是其他值，只要者两个值相等就行
+* 最后将要居中的元素margin设置为auto就可以居中了
+* 注意点：被居中的元素宽度可以不设置，但是不设置的话，就必须是图片这种自身包含尺寸的元素，否则无法实现
+*/
+@mixin verticalCenterModeThird {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+/**
+ * 使用padding实现子元素的垂直居中
+ * 注意点：给父元素设置相等的上下内边距，则子元素自然是垂直居中的，自然这时候的父元素是不能设置高度的
+ * 要让它自动被填充起来，除非设置了一个正好等于上内边距+子元素高度+下内边距的值，否则无法精确的垂直居中
+ */
+
+/**
+ * 使用flex布局 
+ */
+
+/**
+ * 弹性布局
+ * 父元素使用此方法 
+ */
+ @mixin verticalCenterModeSix {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+ }
+
+ /**
+  * 使用line-height对单行文本进行垂直居中
+  * 注意点：line-height的值不能设为100%，这里的百分比是相对于字体尺寸来讲的
+  */
+
+  /**
+   * 使用display:table-cell和vertical-align对容器里的文字进行垂直居中
+   * 父元素display属性需设置为table
+   * 注意：verical-align属性只对拥有valign特性的html元素起作用 
+   */
+  @mixin verticalCenterModeEight {
+    display: table-cell;
+    vertical-align: middle;    
+  }
